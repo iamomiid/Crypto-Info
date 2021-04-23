@@ -5,7 +5,10 @@ import { endpointToRTE, Endpoint } from './endpoint';
 import { Errors } from '@core/errors';
 import { handleError } from '@http/error-response';
 import { handleSuccess } from '@http/success-response';
-import { E, RTE, t, TE } from '@core/prelude';
+import * as E from 'fp-ts/lib/Either';
+import * as t from 'io-ts';
+import * as RTE from 'fp-ts/lib/ReaderTaskEither';
+import * as TE from 'fp-ts/lib/TaskEither';
 
 export type RunEndpoint = ReturnType<typeof runExpress>;
 

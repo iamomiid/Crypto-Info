@@ -43,11 +43,11 @@ export type RepoError = TypeError | DatabaseError;
 
 export type DecodeErrors = TypeError;
 
-export const badRequest = (message: string) =>
-  Errors.as.BadRequest({ message });
+export const badRequest = Errors.as.BadRequest;
 
-export const notAuthenticated = (message: string) =>
-  Errors.as.NotAuthenticated({ message });
+export const criticalError = Errors.as.CriticalError;
+
+export const notAuthenticated = Errors.as.NotAuthenticated;
 
 export type DecodeTypeError<R extends DecodeErrors> = (input: {
   messages: string[];

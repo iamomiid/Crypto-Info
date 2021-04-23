@@ -39,7 +39,7 @@ export const endpointToRTE = <
     input,
     endpoint.input.decode,
     RTE.fromEither,
-    RTE.mapLeft((x) => badRequest(x.join('\n'))),
+    RTE.mapLeft((x) => badRequest({ message: x.join('\n') })),
     RTE.chainW(endpoint.interactor),
     RTE.map(endpoint.output.encode),
   );

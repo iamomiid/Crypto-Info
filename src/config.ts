@@ -1,7 +1,4 @@
-import { config } from 'dotenv-flow';
 import ormConfig from '../ormconfig';
-
-config();
 
 const { env } = process;
 
