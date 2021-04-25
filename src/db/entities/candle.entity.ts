@@ -1,7 +1,7 @@
 import { Base } from './base';
 import { PairEntity } from './pair.entity';
 import { Column, Entity, JoinColumn, ManyToOne, Unique } from 'typeorm';
-import { CandleInterval } from '@core/models/candle';
+import { CandleInterval, CandleIntervalKeys } from '@core/models/candle';
 
 @Entity('candle')
 @Unique('pair-candle', ['pairId', 'interval', 'start', 'end'])
@@ -27,7 +27,7 @@ export class CandleEntity extends Base {
   @Column({ type: 'bool' })
   final!: boolean;
 
-  @Column({ type: 'enum', enum: Object.keys(CandleInterval.keys) })
+  @Column({ type: 'enum', enum: CandleIntervalKeys })
   interval!: CandleInterval;
 
   @Column()

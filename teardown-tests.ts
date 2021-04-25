@@ -1,3 +1,3 @@
 after(async () => {
-  console.log("After");
+  console.log('After');
 });

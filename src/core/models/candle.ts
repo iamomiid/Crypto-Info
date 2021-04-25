@@ -22,10 +22,11 @@ export type CandleId = t.TypeOf<typeof CandleId>;
 
 export const CandleInterval = t.keyof({
   '1m': null,
-  // '5m': null,
-  // '1d': null,
+  '5m': null,
+  '1d': null,
 });
 export type CandleInterval = t.TypeOf<typeof CandleInterval>;
+export const CandleIntervalKeys = Object.keys(CandleInterval.keys);
 
 // -------------------------------------------------------------------------------------
 // Candle

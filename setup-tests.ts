@@ -1,6 +1,6 @@
-import dotenv from "dotenv-flow";
+import dotenv from 'dotenv-flow';
 dotenv.config();
 
 before(async () => {
-  console.log("Started");
+  console.log('Started');
 });

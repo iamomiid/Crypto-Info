@@ -8,7 +8,6 @@ import { constVoid, flow, pipe } from 'fp-ts/lib/function';
 import { EntityManager, LessThan } from 'typeorm';
 import { typeError } from '@core/errors';
 import { withMap } from '@infra/types/with-map';
-import { PairEntity } from '@db/entities/pair.entity';
 
 const CandleDB = withMap<typeof Candle, Partial<CandleEntity>>(
   Candle,
