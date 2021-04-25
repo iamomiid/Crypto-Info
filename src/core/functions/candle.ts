@@ -23,10 +23,10 @@ const transformBinanceCandle = (
   pairId: PairId,
 ): InsertType<Candle> => ({
   rawCandle: {
-    close: CandleFunctions.transformStringToInt(input.close),
-    open: CandleFunctions.transformStringToInt(input.open),
-    low: CandleFunctions.transformStringToInt(input.low),
-    high: CandleFunctions.transformStringToInt(input.high),
+    close: transformStringToInt(input.close),
+    open: transformStringToInt(input.open),
+    low: transformStringToInt(input.low),
+    high: transformStringToInt(input.high),
     start: input.startTime,
     end: input.closeTime,
     interval: input.interval,

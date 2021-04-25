@@ -27,7 +27,7 @@ export class CandleEntity extends Base {
   @Column({ type: 'bool' })
   final!: boolean;
 
-  @Column({ type: 'enum', enum: ['1m'] })
+  @Column({ type: 'enum', enum: Object.keys(CandleInterval.keys) })
   interval!: CandleInterval;
 
   @Column()
