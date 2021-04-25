@@ -13,13 +13,19 @@ export interface DatabaseError {
   error: unknown;
 }
 
+export interface NotFoundError {
+  type: 'NotFoundError';
+  entity: string;
+  query?: unknown;
+}
+
 export interface TypeError {
   type: 'TypeError';
   messages: string[];
 }
 
-export interface NotAuthenticated {
-  type: 'NotAuthenticated';
+export interface NotAuthenticatedError {
+  type: 'NotAuthenticatedError';
   message: string;
 }
 
@@ -34,7 +40,8 @@ export const Errors = makeADT('type')({
   DatabaseError: ofType<DatabaseError>(),
   TypeError: ofType<TypeError>(),
   CriticalError: ofType<CriticalError>(),
-  NotAuthenticated: ofType<NotAuthenticated>(),
+  NotAuthenticatedError: ofType<NotAuthenticatedError>(),
+  NotFoundError: ofType<NotFoundError>(),
 });
 
 export type Errors = ADTType<typeof Errors>;
@@ -43,11 +50,15 @@ export type RepoError = TypeError | DatabaseError;
 
 export type DecodeErrors = TypeError;
 
+export const typeError = Errors.as.TypeError;
+
 export const badRequest = Errors.as.BadRequest;
 
 export const criticalError = Errors.as.CriticalError;
 
-export const notAuthenticated = Errors.as.NotAuthenticated;
+export const notAuthenticated = Errors.as.NotAuthenticatedError;
+
+export const notFound = Errors.as.NotFoundError;
 
 export type DecodeTypeError<R extends DecodeErrors> = (input: {
   messages: string[];

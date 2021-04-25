@@ -200,10 +200,10 @@ bignumber.js@9.0.0:
   resolved "https://registry.yarnpkg.com/bignumber.js/-/bignumber.js-9.0.0.tgz#805880f84a329b5eac6e7cb6f8274b6d82bdf075"
   integrity sha512-t/OYhhJ2SD+YGBQcjY8GzzDHEk9f3nerxjtfa6tlMXfe7frs/WozhvCNoGvpM0P3bNf3Gq5ZRMlGr5f3r4/N8A==
 
-binance-api-node@^0.10.40:
-  version "0.10.40"
-  resolved "https://registry.yarnpkg.com/binance-api-node/-/binance-api-node-0.10.40.tgz#d828906ca5092f0a115751c0baa80ad584434bbb"
-  integrity sha512-GpqFTTVyDCWp1UdyuXC2/cYchNjmFcQYb8db/rPDpVGnvys1eY9lTizMGViWw105isBNKeVCuDKhvrOZXGqedg==
+binance-api-node@^0.10.41:
+  version "0.10.41"
+  resolved "https://registry.yarnpkg.com/binance-api-node/-/binance-api-node-0.10.41.tgz#212395df314cdaf6c4378db14d4f9e54df7d43c6"
+  integrity sha512-Ld0XnY4yw94Yy9uh+yyaeRQ+NLs0rLsQk08bfS9BSBks8XGL5/M9Wnm2x7KG+2ewcCYlHv0XUpuquMlrM2JeXw==
   dependencies:
     isomorphic-fetch "^2.2.1"
     isomorphic-ws "^4.0.1"

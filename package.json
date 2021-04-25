@@ -14,11 +14,16 @@
     "test:e2e": "NODE_ENV=test  mocha -r ts-node/register -r tsconfig-paths/register  --file ./setup-test.ts --file ./teardown-test.ts  e2e/**/*.e2e.ts ",
     "start": "tsc-watch -p tsconfig.json --onSuccess \"node  -r ./register-paths dist/src/main.js\"",
     "lint": "yarn eslint --ignore-path .gitignore --ignore-path .eslintignore . --fix",
-    "lint:file": "yarn eslint --ignore-path .gitignore --ignore-path .eslintignore --fix"
+    "lint:file": "yarn eslint --ignore-path .gitignore --ignore-path .eslintignore --fix",
+    "typeorm": "node -r ts-node/register -r ./register-paths.js ./node_modules/typeorm/cli.js",
+    "migration:create": "yarn typeorm migration:create -n",
+    "migration:generate": "yarn typeorm migration:generate -n",
+    "migration:run": "yarn typeorm migration:run",
+    "migration:revert": "yarn typeorm migration:revert"
   },
   "dependencies": {
     "@morphic-ts/adt": "^3.0.0",
-    "binance-api-node": "^0.10.40",
+    "binance-api-node": "^0.10.41",
     "body-parser": "^1.19.0",
     "dotenv-flow": "^3.2.0",
     "express": "^4.17.1",

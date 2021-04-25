@@ -3,13 +3,16 @@ import { runExpress } from '@infra/express-runner';
 import { bootstrapExpressApp } from 'api';
 import { getDatabaseConnection, getPort } from 'config';
 import { createConnection } from 'typeorm';
-import { runSeeds } from '@core/seed';
+import { runSeeds } from 'seed';
+import { runWebsocket } from 'websocket';
 
 async function bootstrap() {
   const connection = await createConnection(getDatabaseConnection());
   const em = connection.createEntityManager();
 
   await runSeeds();
+
+  await runWebsocket();
 
   const handle = runExpress((req) => (rte) => rte({ ...repos(em) }));
 
