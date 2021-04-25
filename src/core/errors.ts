@@ -13,8 +13,14 @@ export interface DatabaseError {
   error: unknown;
 }
 
+export interface BinanceError {
+  type: 'BinanceError';
+  error: unknown;
+}
+
 export interface NotFoundError {
   type: 'NotFoundError';
+  message: string;
   entity: string;
   query?: unknown;
 }
@@ -42,6 +48,7 @@ export const Errors = makeADT('type')({
   CriticalError: ofType<CriticalError>(),
   NotAuthenticatedError: ofType<NotAuthenticatedError>(),
   NotFoundError: ofType<NotFoundError>(),
+  BinanceError: ofType<BinanceError>(),
 });
 
 export type Errors = ADTType<typeof Errors>;
@@ -51,6 +58,8 @@ export type RepoError = TypeError | DatabaseError;
 export type DecodeErrors = TypeError;
 
 export const typeError = Errors.as.TypeError;
+
+export const binanceError = Errors.as.BinanceError;
 
 export const badRequest = Errors.as.BadRequest;
 

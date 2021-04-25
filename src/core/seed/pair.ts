@@ -3,7 +3,7 @@ import { env } from 'process';
 import { A, O, RTE, TE } from '@core/prelude';
 import { pipe } from 'fp-ts/lib/function';
 import fs from 'fs';
-import { PairRepository } from '@core/interfaces/pair.repository';
+import { PairRepository } from '@core/interfaces/db/pair.repository';
 
 const readFile = TE.tryCatchK(
   () =>

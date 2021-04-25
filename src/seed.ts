@@ -3,13 +3,17 @@ import { Errors } from '@core/errors';
 import { A, E, RTE } from '@core/prelude';
 import { seedPair } from '@core/seed/pair';
 import { repos } from '@db/repositories';
+import { mkBinanceService } from 'external/binance.service';
 import { EntityManager, getConnection } from 'typeorm';
 
 type SeedFunction<A> = () => RTE.ReaderTaskEither<Dependencies, Errors, A>;
 
 const seeds: SeedFunction<any>[] = [seedPair];
 
-const mkDependencies = (em: EntityManager): Dependencies => ({ ...repos(em) });
+const mkDependencies = (em: EntityManager): Dependencies => ({
+  ...repos(em),
+  BinanceService: mkBinanceService(),
+});
 
 export const runSeeds = async () => {
   const connection = getConnection();
@@ -29,4 +33,3 @@ export const runSeeds = async () => {
     ),
   );
 };
-

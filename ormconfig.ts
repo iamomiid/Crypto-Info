@@ -11,7 +11,7 @@ const option: ConnectionOptions = {
   database: process.env.DB_NAME,
   migrationsTableName: 'migration',
   // debug: true,
-  logging: true,
+  logging: false,
   migrations: [__dirname + '/migration/*.ts'],
   synchronize: false,
   cli: {

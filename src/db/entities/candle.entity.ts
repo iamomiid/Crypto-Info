@@ -1,6 +1,6 @@
 import { Base } from './base';
 import { PairEntity } from './pair.entity';
-import { Column, Entity, ManyToOne, Unique } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne, Unique } from 'typeorm';
 import { CandleInterval } from '@core/models/candle';
 
 @Entity('candle')
@@ -18,21 +18,22 @@ export class CandleEntity extends Base {
   @Column({ type: 'bigint' })
   close!: number;
 
-  @Column({ type: 'timestamp' })
+  @Column({ type: 'timestamp', precision: 6 })
   start!: Date;
 
-  @Column({ type: 'timestamp' })
+  @Column({ type: 'timestamp', precision: 6 })
   end!: Date;
 
-  @Column({ type: 'boolean' })
+  @Column({ type: 'bool' })
   final!: boolean;
 
-  @Column({ type: 'enum', enum: Object.keys(CandleInterval.keys) })
-  interval!: string;
+  @Column({ type: 'enum', enum: ['1m'] })
+  interval!: CandleInterval;
 
   @Column()
   pairId!: number;
 
   @ManyToOne(() => PairEntity)
+  @JoinColumn()
   pair!: PairEntity;
 }

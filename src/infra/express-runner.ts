@@ -1,6 +1,6 @@
 import { Dependencies } from '@core/dependencies';
 import { pipe } from 'fp-ts/lib/function';
-import { Request, Response } from 'express';
+import { Request, Response, Router } from 'express';
 import { endpointToRTE, Endpoint } from './endpoint';
 import { Errors } from '@core/errors';
 import { handleError } from '@http/error-response';
@@ -25,3 +25,14 @@ export const runExpress = (
   pipe(supply(req), endpointToRTE(endpoint), provider(req))().then(
     E.fold(handleError(req, res), handleSuccess(req, res)),
   );
+
+export const controller = (
+  path: string,
+  configure: (router: Router) => Router,
+) => {
+  const baseRouter = Router();
+  const childRouter = Router();
+  baseRouter.use(path, configure(childRouter));
+
+  return baseRouter;
+};

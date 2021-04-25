@@ -19,10 +19,11 @@ export interface ICandleRepository {
     interval: CandleInterval,
   ) => TE.TaskEither<RepoError, O.Option<Candle>>;
   save: (candle: InsertType<Candle>) => TE.TaskEither<RepoError, Candle>;
-  update: (
-    id: CandleId,
-    candle: InsertType<Candle>,
-  ) => TE.TaskEither<RepoError, Candle>;
+  update: (id: CandleId, candle: Candle) => TE.TaskEither<RepoError, Candle>;
+  getCandles: (
+    pairId: PairId,
+    interval: CandleInterval,
+  ) => TE.TaskEither<RepoError, Candle[]>;
 }
 
 export const CandleRepository = extractServiceOrRepo('CandleRepository', {
@@ -31,4 +32,5 @@ export const CandleRepository = extractServiceOrRepo('CandleRepository', {
   findOpenCandlesBefore: null,
   save: null,
   update: null,
+  getCandles: null,
 });

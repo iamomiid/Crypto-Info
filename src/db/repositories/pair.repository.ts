@@ -1,4 +1,4 @@
-import { IPairRepository } from '@core/interfaces/pair.repository';
+import { IPairRepository } from '@core/interfaces/db/pair.repository';
 import { Pair } from '@core/models/pair';
 import { PairEntity } from '@db/entities/pair.entity';
 import { find, findOne, save } from '@infra/db';

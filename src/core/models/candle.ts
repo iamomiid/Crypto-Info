@@ -22,8 +22,8 @@ export type CandleId = t.TypeOf<typeof CandleId>;
 
 export const CandleInterval = t.keyof({
   '1m': null,
-  '5m': null,
-  '1d': null,
+  // '5m': null,
+  // '1d': null,
 });
 export type CandleInterval = t.TypeOf<typeof CandleInterval>;
 
@@ -31,18 +31,23 @@ export type CandleInterval = t.TypeOf<typeof CandleInterval>;
 // Candle
 // -------------------------------------------------------------------------------------
 
-export const Candle = t.type({
-  id: auto(CandleId),
-  high: t.number,
-  low: t.number,
-  open: t.number,
-  close: t.number,
-  pairId: PairId,
-  pair: auto(Pair),
+export const RawCandle = t.type({
+  high: t.numberOrString,
+  low: t.numberOrString,
+  open: t.numberOrString,
+  close: t.numberOrString,
   interval: CandleInterval,
   start: t.date,
   end: t.date,
   final: t.boolean,
+});
+export type RawCandle = t.TypeOf<typeof RawCandle>;
+
+export const Candle = t.type({
+  id: auto(CandleId),
+  pairId: PairId,
+  pair: t.optionFromNullable(Pair),
+  rawCandle: RawCandle,
 });
 export type Candle = t.TypeOf<typeof Candle>;
 
@@ -51,17 +56,17 @@ export type Candle = t.TypeOf<typeof Candle>;
 // -------------------------------------------------------------------------------------
 export const BinanceWSInputCandle = t.type({
   startTime: t.DateFromNumber,
-  open: t.NumberFromString,
-  high: t.NumberFromString,
-  low: t.NumberFromString,
-  close: t.NumberFromString,
-  volume: t.NumberFromString,
+  open: t.numberOrString,
+  high: t.numberOrString,
+  low: t.numberOrString,
+  close: t.numberOrString,
+  volume: t.numberOrString,
   closeTime: t.DateFromNumber,
   symbol: t.string,
-  quoteVolume: t.NumberFromString,
+  quoteVolume: t.numberOrString,
   interval: CandleInterval,
   isFinal: t.boolean,
-  trades: t.number,
-  buyVolume: t.NumberFromString,
+  trades: t.numberOrString,
+  buyVolume: t.numberOrString,
 });
 export type BinanceWSInputCandle = t.TypeOf<typeof BinanceWSInputCandle>;

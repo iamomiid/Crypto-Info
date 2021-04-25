@@ -5,6 +5,7 @@ import { getDatabaseConnection, getPort } from 'config';
 import { createConnection } from 'typeorm';
 import { runSeeds } from 'seed';
 import { runWebsocket } from 'websocket';
+import { mkBinanceService } from 'external/binance.service';
 
 async function bootstrap() {
   const connection = await createConnection(getDatabaseConnection());
@@ -14,7 +15,9 @@ async function bootstrap() {
 
   await runWebsocket();
 
-  const handle = runExpress((req) => (rte) => rte({ ...repos(em) }));
+  const handle = runExpress((req) => (rte) =>
+    rte({ ...repos(em), BinanceService: mkBinanceService() }),
+  );
 
   const app = bootstrapExpressApp(handle);
 

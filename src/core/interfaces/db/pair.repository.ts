@@ -1,5 +1,5 @@
 import { RepoError } from '@core/errors';
-import { Pair } from '@core/models/pair';
+import { Pair, PairId } from '@core/models/pair';
 import { TE, O } from '@core/prelude';
 import { extractServiceOrRepo } from '@infra/reader';
 
